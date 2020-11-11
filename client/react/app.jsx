@@ -1,7 +1,8 @@
 import React from 'react';
+import {testApi} from "../api/common/test";
 
 export const App = () => {
     return (
-        <div>Heh2ehehe</div>
+        <button onClick={testApi.login}>Heh2ehehe</button>
     );
 };
