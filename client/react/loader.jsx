@@ -1,4 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {App} from "./app";
+import {appLoader} from "../lib/app-loader";
 
-ReactDOM.render(<div>Heh2ehehe</div>, document.getElementById("app"));
+appLoader.init().then(() => {
+    ReactDOM.render(<App/>, document.getElementById("app"));
+})
+
