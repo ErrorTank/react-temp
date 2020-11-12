@@ -10,28 +10,16 @@ export const App = () => {
     let [e, sete] = useState('');
     let {isAuthen} = useAuthen();
 
-    let yy = useRef();
+    let yy = useRef(null);
     useEffect(() => {
-        let cc = null;
-        let  i =0;
-        const id = setInterval(() => {
-            i++;
-            yy.current = i;
 
-        }, 1000);
-
-        // We need the interval id to be accessible from the whole component.
-        // If we stored the id in a state variable, the component would be re-rendered
-        // after the state update so a new interval will be created (this effect is triggered
-        // after every re-render) leading us to the infinite loop hell.
-        cc = id;
-
+        yy.current = setInterval(() => console.log("ooo"),1000)
         return () => {
             console.log("ttty")
             clearInterval(cc)
         };
     }, []);
-
+    console.log(yy)
     const login = () => {
         testApi.login()
             .then(({token}) => authenCache.setAuthen(token));
