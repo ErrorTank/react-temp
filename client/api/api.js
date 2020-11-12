@@ -8,7 +8,7 @@ const authenApiConfig = {
 
 };
 
-const offlineApiConfig = {
+const guessApiConfig = {
     hostURL: `${process.env.API_URI}/api`
 };
 
@@ -18,5 +18,5 @@ const offlineApiConfig = {
 
 export const authenApi = apiFactory.createApi(authenApiConfig);
 
-export const offlineApi = apiFactory.createApi(offlineApiConfig);
+export const guessApi = apiFactory.createApi(guessApiConfig);
 

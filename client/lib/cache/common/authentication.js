@@ -11,9 +11,25 @@ const cookiesEngine = {
 
 export const authenCache = (() => {
     const cache = new Cache(cookiesEngine);
+    const listeners = [];
+
+    const setAuthen = (authen, options) => {
+
+        cache.set(authen, "k-authen-token", options);
+        Promise.all(listeners.map((l) => l(authen)))
+    }
+
     return {
+        onChange: (listener) => {
+            listeners.push(listener);
+
+            return () => {
+                let i = listeners.indexOf(listener);
+                listeners.splice(i, 1);
+            };
+        },
         clearAuthen() {
-            cache.set(null, "k-authen-token");
+            setAuthen(null)
         },
         loadAuthen() {
             return new Promise((resolve, reject) => {
@@ -28,7 +44,7 @@ export const authenCache = (() => {
                             return resolve();
                         }
                     }).catch(err => {
-                        cache.set(null, "k-authen-token");
+                        setAuthen(null)
                     });
 
                 }
@@ -38,9 +54,6 @@ export const authenCache = (() => {
         getAuthen() {
             return cache.get("k-authen-token")
         },
-        setAuthen(authen, options) {
-
-            cache.set(authen, "k-authen-token", options);
-        }
+        setAuthen
     }
 })();

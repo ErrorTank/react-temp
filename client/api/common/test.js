@@ -1,10 +1,10 @@
 
-import {authenApi, offlineApi} from "../api";
+import {authenApi, guessApi} from "../api";
 
 
 export const testApi = {
     login(){
-        return offlineApi.post("/login", null)
+        return guessApi.post("/login", null)
     },
     authenticatedUser(){
         return authenApi.get("/auth")
