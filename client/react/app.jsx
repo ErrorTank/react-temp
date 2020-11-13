@@ -11,14 +11,14 @@ export const App = () => {
     let {isAuthen} = useAuthen();
 
     let yy = useRef(null);
-    useEffect(() => {
-
-        yy.current = setInterval(() => console.log("ooo"),1000)
-        return () => {
-            console.log("ttty")
-            clearInterval(cc)
-        };
-    }, []);
+    // useEffect(() => {
+    //
+    //     yy.current = setInterval(() => console.log("ooo"),1000)
+    //     return () => {
+    //         console.log("ttty")
+    //         clearInterval(cc)
+    //     };
+    // }, []);
     console.log(yy)
     const login = () => {
         testApi.login()
@@ -54,7 +54,7 @@ export const App = () => {
             ) : (
                 <button onClick={login}>Login</button>
             )}
-            <Chep hehe={baba}/>
+            <Chep/>
         </div>
     );
 };
